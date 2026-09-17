@@ -22,9 +22,12 @@ env/
 .DS_Store
 Thumbs.db
 
-# Data (large, reconstructable from src/)
+# Data — generated runs are large and reproducible from src/.
+# Scoped to run_<timestamp>/ dirs and their "latest" symlinks so the committed
+# reference snapshot under data/processed/*/ stays visible (see README).
 data/raw/
-data/processed/
+data/processed/**/run_*/
+data/processed/**/latest
 
 # Model artifacts
 models/bayesian_trace.nc
@@ -33,8 +36,9 @@ models/lstm_checkpoint.pt
 # Keep benchmark results
 !models/benchmark_results.json
 
-# Outputs (reconstructable)
-outputs/
+# Outputs — generated runs only; outputs/figures/ holds the committed snapshot.
+outputs/run_*/
+outputs/latest
 
 # Jupyter
 .ipynb_checkpoints/
